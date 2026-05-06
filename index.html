@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.T.A.C.K. Protocol | Leadership Infrastructure</title>
+    <style>
+        :root {
+            --primary-blue: #1a237e;
+            --accent-gold: #ffab00;
+            --text-dark: #263238;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --slate: #455a64;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            color: var(--text-dark); 
+            background-color: var(--bg-light); 
+            line-height: 1.6; 
+            overflow-x: hidden;
+        }
+
+        header { 
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #283593 100%); 
+            color: var(--white); 
+            padding: 100px 20px; 
+            text-align: center; 
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        .hero h1 { 
+            font-size: 3.5rem; 
+            letter-spacing: 4px; 
+            margin-bottom: 10px; 
+            text-transform: uppercase; 
+            font-weight: 900; 
+        }
+
+        .hero p { 
+            font-size: 1.3rem; 
+            opacity: 0.9; 
+            max-width: 700px; 
+            margin: 0 auto 30px; 
+        }
+
+        .domains { 
+            font-family: 'Courier New', Courier, monospace; 
+            font-size: 0.95rem; 
+            color: var(--accent-gold); 
+            margin-bottom: 25px; 
+            display: block; 
+            font-weight: bold; 
+        }
+
+        .btn { 
+            display: inline-block; 
+            background-color: var(--accent-gold); 
+            color: var(--primary-blue); 
+            padding: 18px 45px; 
+            border-radius: 50px; 
+            text-decoration: none; 
+            font-weight: 800; 
+            transition: all 0.3s ease; 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px; 
+            box-shadow: 0 4px 15px rgba(255, 171, 0, 0.3); 
+        }
+
+        .btn:hover { 
+            transform: translateY(-3px); 
+            background-color: #ffd600; 
+            box-shadow: 0 6px 20px rgba(255, 171, 0, 0.4); 
+        }
+
+        section { padding: 100px 0; }
+
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-size: 2.5rem; color: var(--primary-blue); text-transform: uppercase; }
+        .section-title .underline { width: 80px; height: 5px; background-color: var(--accent-gold); margin: 20px auto; border-radius: 2px; }
+
+        .stack-grid { 
+            display: grid; 
+            grid-template-columns: repeat(5, 1fr); 
+            gap: 15px; 
+            margin-top: 50px; 
+        }
+
+        .stack-card { 
+            background: var(--white); 
+            padding: 40px 15px; 
+            border-radius: 15px; 
+            text-align: center; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+            transition: all 0.4s ease; 
+            border-top: 6px solid var(--primary-blue);
+        }
+
+        .stack-card:hover { transform: translateY(-10px); }
+
+        .stack-letter-accent { 
+            font-size: 2.5rem; 
+            font-weight: 900; 
+            color: var(--accent-gold); 
+            display: block; 
+            margin-bottom: 10px; 
+        }
+
+        .stack-name { 
+            font-weight: 800; 
+            display: block; 
+            margin-bottom: 15px; 
+            color: var(--primary-blue); 
+            text-transform: uppercase; 
+            font-size: 1rem; 
+        }
+
+        .cadence-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+
+        .cadence-item { 
+            background: var(--white); 
+            padding: 30px; 
+            border-radius: 15px; 
+            display: flex; 
+            align-items: center; 
+            gap: 20px; 
+            border-left: 6px solid var(--primary-blue); 
+        }
+
+        .cadence-icon { 
+            background: var(--primary-blue); 
+            color: var(--white); 
+            width: 60px; 
+            height: 60px; 
+            border-radius: 12px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            flex-shrink: 0; 
+            font-weight: 900; 
+        }
+
+        .download-banner { 
+            background: linear-gradient(rgba(26, 35, 126, 0.9), rgba(26, 35, 126, 0.9)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1000');
+            background-size: cover;
+            background-position: center;
+            text-align: center; 
+            padding: 80px 40px; 
+            border-radius: 25px; 
+            color: var(--white); 
+        }
+
+        .legal-footer { background-color: #f1f3f4; padding: 60px 20px; color: #546e7a; font-size: 0.85rem; border-top: 1px solid #cfd8dc; }
+        .legal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; margin-bottom: 30px; }
+        .legal-item h4 { color: var(--primary-blue); margin-bottom: 10px; text-transform: uppercase; font-size: 0.9rem; }
+        .copyright-bar { text-align: center; padding-top: 30px; border-top: 1px solid #cfd8dc; }
+
+        @media (max-width: 900px) {
+            .stack-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .stack-grid { grid-template-columns: 1fr; }
+            .cadence-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container hero">
+            <span class="domains">westack.me | westack.you | thestack.pro</span>
+            <h1>S.T.A.C.K.</h1>
+            <p>The organizational leadership protocol designed for leaders who value people as much as performance.</p>
+            <a href="The_STACK_Protocol_V2.pdf" class="btn">Download Protocol v2</a>
+        </div>
+    </header>
+
+    <section id="protocol">
+        <div class="container">
+            <div class="section-title">
+                <h2>The Protocol Stack</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="stack-grid">
+                <div class="stack-card">
+                    <span class="stack-letter-accent">S</span>
+                    <span class="stack-name">Servant-led</span>
+                    <p>Leadership as a redundant power supply for team growth.</p>
+                </div>
+                <div class="stack-card">
+                    <span class="stack-letter-accent">T</span>
+                    <span class="stack-name">Team</span>
+                    <p>Human capital as mission-critical infrastructure.</p>
+                </div>
+                <div class="stack-card">
+                    <span class="stack-letter-accent">A</span>
+                    <span class="stack-name">Architecture</span>
+                    <p>Structural integrity via the STACK Map and Process Archive.</p>
+                </div>
+                <div class="stack-card">
+                    <span class="stack-letter-accent">C</span>
+                    <span class="stack-name">Continuous</span>
+                    <p>Steady, focused advancement through iterative refinement.</p>
+                </div>
+                <div class="stack-card">
+                    <span class="stack-letter-accent">K</span>
+                    <span class="stack-name">Kaizen</span>
+                    <p>Humanized waste elimination to protect mental energy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="background-color: #f1f3f4;">
+        <div class="container">
+            <div class="section-title">
+                <h2>The Inverse Pulse</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="cadence-grid">
+                <div class="cadence-item">
+                    <div class="cadence-icon">P/S</div>
+                    <div class="cadence-content">
+                        <h3>Weekly Pit Stop</h3>
+                        <p>Low-latency individual heartbeat to remove barriers and stressors.</p>
+                    </div>
+                </div>
+                <div class="cadence-item">
+                    <div class="cadence-icon">A/F</div>
+                    <div class="cadence-content">
+                        <h3>Monthly Alignment Forge</h3>
+                        <p>Architectural resolution huddle to solve cross-functional bottlenecks.</p>
+                    </div>
+                </div>
+                <div class="cadence-item">
+                    <div class="cadence-icon">P/R</div>
+                    <div class="cadence-content">
+                        <h3>Quarterly Pulse Reset</h3>
+                        <p>90-day systemic recalibration of career architecture and GWC health.</p>
+                    </div>
+                </div>
+                <div class="cadence-item">
+                    <div class="cadence-icon">V/F</div>
+                    <div class="cadence-content">
+                        <h3>Bi-Annual Vision Forge</h3>
+                        <p>Global routing update to resynchronize nodes with the system roadmap.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="manifesto">
+        <div class="container">
+            <div class="download-banner">
+                <h2>Scale Without Burnout</h2><br>
+                <p>Deploy a leadership operating system that protects your team's mental bandwidth.
+                </p><br>
+                <a href="The_STACK_Protocol_V2.pdf" class="btn" download>Download the Full Protocol</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="legal-footer">
+        <div class="container">
+            <div class="legal-grid">
+                <div class="legal-item">
+                    <h4>EOS® Alignment</h4>
+                    <p>EOS® and the EOS Model® are registered trademarks of EOS Worldwide. S.T.A.C.K. utilizes EOS principles for structural foundation [cite: 397-398].</p>
+                </div>
+                <div class="legal-item">
+                    <h4>Servant Leadership</h4>
+                    <p>Concepts based on Robert K. Greenleaf. The "SERVE" model is inspired by Ken Blanchard and Mark Miller [cite: 399-400].</p>
+                </div>
+                <div class="legal-item">
+                    <h4>Lean Six Sigma</h4>
+                    <p>Incorporates LSS concepts such as DOWNTIME waste, Kaizen, and DMAIC for process optimization [cite: 402-403].</p>
+                </div>
+            </div>
+            <div class="copyright-bar">
+                <p><strong>&copy; 2026 The STACK Protocol Working Group.</strong> <i>Managing the architecture of success.</i><br></p> <br><p>This protocol is an independent framework and is not officially endorsed by the aforementioned organizations.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
